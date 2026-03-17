@@ -13,13 +13,13 @@ background:transparent;
 font-family:'Segoe UI',sans-serif;
 }
 
-/* Thin countdown bar */
+/* Countdown bar */
 
 .wrap{
 width:100%;
 background:#356ea7;
 color:#fff;
-min-height:54px;
+min-height:52px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -27,15 +27,11 @@ padding:10px 18px;
 border-top:5px solid #b7d334;
 }
 
-/* ALIS DX lime accent */
-border-top:5px solid #b7d334;
-}
-
 /* inner layout */
 
 .bar{
 width:100%;
-max-width:none;
+max-width:1400px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -44,7 +40,7 @@ flex-wrap:wrap;
 text-align:center;
 }
 
-/* text label */
+/* label */
 
 .label{
 font-size:16px;
@@ -52,7 +48,7 @@ font-weight:600;
 white-space:nowrap;
 }
 
-/* countdown numbers container */
+/* numbers container */
 
 .nums{
 display:flex;
@@ -62,7 +58,7 @@ flex-wrap:wrap;
 justify-content:center;
 }
 
-/* each number segment */
+/* each segment */
 
 .seg{
 display:flex;
@@ -73,12 +69,12 @@ gap:4px;
 /* number */
 
 .num{
-font-size:22px;
+font-size:24px;
 font-weight:700;
 line-height:1;
 }
 
-/* label under number */
+/* unit label */
 
 .lbl{
 font-size:12px;
@@ -86,7 +82,7 @@ opacity:.9;
 text-transform:lowercase;
 }
 
-/* date text */
+/* date */
 
 .date{
 font-size:15px;
@@ -94,7 +90,7 @@ font-weight:600;
 white-space:nowrap;
 }
 
-/* mobile adjustment */
+/* mobile */
 
 @media (max-width:700px){
 
@@ -108,7 +104,7 @@ font-size:14px;
 }
 
 .num{
-font-size:18px;
+font-size:20px;
 }
 
 .lbl{
@@ -155,18 +151,13 @@ June 15, 2026 • 8:00 AM
 
 <script>
 
-/* Countdown target date */
-/* June 15, 2026 at 8:00 AM */
+/* Launch date: June 15 2026 at 8 AM */
 
-var g = new Date(2026, 5, 15, 8, 0, 0);
-
-/* pad numbers */
+var g = new Date(2026,5,15,8,0,0);
 
 function p(n){
 return String(n).padStart(2,'0');
 }
-
-/* countdown calculation */
 
 function t(){
 
@@ -194,7 +185,6 @@ el.innerHTML =
 }
 
 t();
-
 setInterval(t,1000);
 
 </script>
