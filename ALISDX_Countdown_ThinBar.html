@@ -2,125 +2,197 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box;}
+
 html,body{
-  width:100%;
-  background:transparent;
-  font-family:'Segoe UI',sans-serif;
+width:100%;
+background:transparent;
+font-family:'Segoe UI',sans-serif;
 }
+
+/* Thin countdown bar */
 
 .wrap{
-  width:100%;
- background:linear-gradient(90deg,#356ea7,#2e7d32);
-  color:#fff;
-  min-height:52px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:10px 18px;
+width:100%;
+background:linear-gradient(90deg,#356ea7,#2e7d32);
+color:#fff;
+min-height:52px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:10px 18px;
 }
 
+/* inner layout */
+
 .bar{
-  width:100%;
-  max-width:1400px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:18px;
-  flex-wrap:wrap;
-  text-align:center;
+width:100%;
+max-width:1400px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+text-align:center;
+}
+
+/* text label */
+
+.label{
+font-size:16px;
+font-weight:600;
+white-space:nowrap;
+}
+
+/* countdown numbers container */
+
+.nums{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+/* each number segment */
+
+.seg{
+display:flex;
+align-items:baseline;
+gap:4px;
+}
+
+/* number */
+
+.num{
+font-size:22px;
+font-weight:700;
+line-height:1;
+}
+
+/* label under number */
+
+.lbl{
+font-size:12px;
+opacity:.9;
+text-transform:lowercase;
+}
+
+/* date text */
+
+.date{
+font-size:15px;
+font-weight:600;
+white-space:nowrap;
+}
+
+/* mobile adjustment */
+
+@media (max-width:700px){
+
+.wrap{
+padding:8px 12px;
+min-height:60px;
 }
 
 .label{
-  font-size:16px;
-  font-weight:600;
-  white-space:nowrap;
-}
-
-.nums{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.seg{
-  display:flex;
-  align-items:baseline;
-  gap:4px;
+font-size:14px;
 }
 
 .num{
-  font-size:22px;
-  font-weight:700;
-  line-height:1;
+font-size:18px;
 }
 
 .lbl{
-  font-size:12px;
-  opacity:.9;
-  text-transform:lowercase;
+font-size:11px;
 }
 
 .date{
-  font-size:15px;
-  font-weight:600;
-  white-space:nowrap;
+font-size:13px;
 }
 
-@media (max-width:700px){
-  .wrap{padding:8px 12px; min-height:60px;}
-  .label{font-size:14px;}
-  .num{font-size:18px;}
-  .lbl{font-size:11px;}
-  .date{font-size:13px;}
-  .bar{gap:10px;}
-  .nums{gap:10px;}
+.bar{
+gap:10px;
 }
+
+.nums{
+gap:10px;
+}
+
+}
+
 </style>
+
 </head>
+
 <body>
+
 <div class="wrap">
-  <div class="bar">
-    <div class="label">Days Until Go Live</div>
-    <div class="nums" id="nums"></div>
-    <div class="date">June 15, 2026</div>
-  </div>
+
+<div class="bar">
+
+<div class="label">
+Days Until Go Live
+</div>
+
+<div class="nums" id="nums"></div>
+
+<div class="date">
+June 15, 2026 • 8:00 AM
+</div>
+
+</div>
+
 </div>
 
 <script>
-var g = new Date('2026-06-15T00:00:00');
+
+/* Countdown target date */
+/* June 15, 2026 at 8:00 AM */
+
+var g = new Date(2026, 5, 15, 8, 0, 0);
+
+/* pad numbers */
 
 function p(n){
-  return String(n).padStart(2,'0');
+return String(n).padStart(2,'0');
 }
 
+/* countdown calculation */
+
 function t(){
-  var n = new Date();
-  var d = g - n;
-  var el = document.getElementById('nums');
 
-  if(d <= 0){
-    el.innerHTML = '<div class="num">Go Live!</div>';
-    return;
-  }
+var n = new Date();
+var d = g - n;
+var el = document.getElementById('nums');
 
-  var dy = Math.floor(d / 86400000);
-  var h  = Math.floor((d % 86400000) / 3600000);
-  var m  = Math.floor((d % 3600000) / 60000);
-  var s  = Math.floor((d % 60000) / 1000);
+if(d <= 0){
+el.innerHTML = '<div class="num">Go Live!</div>';
+return;
+}
 
-  el.innerHTML =
-    '<div class="seg"><div class="num">' + dy + '</div><div class="lbl">days</div></div>' +
-    '<div class="seg"><div class="num">' + p(h) + '</div><div class="lbl">hrs</div></div>' +
-    '<div class="seg"><div class="num">' + p(m) + '</div><div class="lbl">min</div></div>' +
-    '<div class="seg"><div class="num">' + p(s) + '</div><div class="lbl">sec</div></div>';
+var dy = Math.floor(d / 86400000);
+var h  = Math.floor((d % 86400000) / 3600000);
+var m  = Math.floor((d % 3600000) / 60000);
+var s  = Math.floor((d % 60000) / 1000);
+
+el.innerHTML =
+
+'<div class="seg"><div class="num">' + dy + '</div><div class="lbl">days</div></div>' +
+'<div class="seg"><div class="num">' + p(h) + '</div><div class="lbl">hrs</div></div>' +
+'<div class="seg"><div class="num">' + p(m) + '</div><div class="lbl">min</div></div>' +
+'<div class="seg"><div class="num">' + p(s) + '</div><div class="lbl">sec</div></div>';
+
 }
 
 t();
-setInterval(t, 1000);
+
+setInterval(t,1000);
+
 </script>
+
 </body>
 </html>
