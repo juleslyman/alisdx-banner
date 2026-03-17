@@ -4,26 +4,36 @@
 <meta charset="UTF-8">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:100%;background:transparent;font-family:'Segoe UI',sans-serif;}
+html,body{
+  width:100%;
+  background:transparent;
+  font-family:'Segoe UI',sans-serif;
+}
 
 .wrap{
   position:relative;
   width:100%;
-  max-width:1920px;
   height:160px;
+  background:#eaf3fb;
+  overflow:hidden;
+}
+
+.banner-area{
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:210px; /* same as countdown width */
   overflow:hidden;
   background:#eaf3fb;
 }
 
 .banner-img{
-  position:absolute;
-  inset:0;
   width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
   object-position:left center;
   display:block;
-  background:#eaf3fb;
 }
 
 .cd{
@@ -98,6 +108,7 @@ html,body{width:100%;background:transparent;font-family:'Segoe UI',sans-serif;}
 
 @media (max-width:900px){
   .wrap{height:140px;}
+  .banner-area{right:190px;}
   .cd{width:190px;}
   .cd-num{font-size:20px;}
   .cd-date{font-size:12px;}
@@ -105,22 +116,25 @@ html,body{width:100%;background:transparent;font-family:'Segoe UI',sans-serif;}
 
 @media (max-width:700px){
   .wrap{height:120px;}
-  .cd{width:175px; padding:8px;}
+  .banner-area{right:175px;}
+  .cd{width:175px;padding:8px;}
   .cd-title{font-size:10px;}
   .cd-num{font-size:18px;}
   .cd-lbl{font-size:7px;}
   .cd-date{font-size:11px;}
-  .cd-seg{padding:0 5px; min-width:36px;}
+  .cd-seg{padding:0 5px;min-width:36px;}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <img
-    class="banner-img"
-    src="https://juleslyman.github.io/alisdx-banner/banner_cropped.png"
-    alt="ALIS DX Banner"
-  >
+  <div class="banner-area">
+    <img
+      class="banner-img"
+      src="https://juleslyman.github.io/alisdx-banner/banner_cropped.png"
+      alt="ALIS DX Banner"
+    >
+  </div>
 
   <div class="cd">
     <div class="cd-title">Days Until Go Live</div>
